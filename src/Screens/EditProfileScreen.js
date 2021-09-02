@@ -68,6 +68,7 @@ export default function EditProfileScreen() {
           />
         </View>
       </View>
+      <Text></Text>
     </View>
   );
 }
