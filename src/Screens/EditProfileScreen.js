@@ -12,8 +12,10 @@ import {
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 import FontAswesome from "react-native-vector-icons/FontAwesome";
 import Feather from "react-native-vector-icons/Feather";
+import { useTheme } from "react-native-paper";
 
 export default function EditProfileScreen() {
+  const { colors } = useTheme();
   return (
     <View style={styles.container}>
       <View style={{ margin: 20 }}>
@@ -59,12 +61,39 @@ export default function EditProfileScreen() {
           <Text style={{ marginTop: 10, fontSize: 18, fontWeight: "bold" }}>Gokul Raj</Text>
         </View>
         <View style={styles.action}>
-          <FontAswesome name="user-o" style={{ marginRight: 10 }} size={20} />
+          <FontAswesome name="user-o" color={colors.text} style={{ marginRight: 10 }} size={20} />
           <TextInput
             placeholder="First Name"
             autoCorrect={false}
             placeholderTextColor="#666666"
-            style={styles.textInputs}
+            style={[styles.textInputs, { color: colors.text }]}
+          />
+        </View>
+        <View style={styles.action}>
+          <FontAswesome name="user-o" color={colors.text} style={{ marginRight: 10 }} size={20} />
+          <TextInput
+            placeholder="Last Name"
+            autoCorrect={false}
+            placeholderTextColor="#666666"
+            style={[styles.textInputs, { color: colors.text }]}
+          />
+        </View>
+        <View style={styles.action}>
+          <Feather name="phone" color={colors.text} style={{ marginRight: 10 }} size={20} />
+          <TextInput
+            placeholder="Phone number"
+            autoCorrect={false}
+            placeholderTextColor="#666666"
+            style={[styles.textInputs, { color: colors.text }]}
+          />
+        </View>
+        <View style={styles.action}>
+          <FontAswesome name="envelop-o" color={colors.text} style={{ marginRight: 10 }} size={20} />
+          <TextInput
+            placeholder="First Name"
+            autoCorrect={false}
+            placeholderTextColor="#666666"
+            style={[styles.textInputs, { color: colors.text }]}
           />
         </View>
       </View>
