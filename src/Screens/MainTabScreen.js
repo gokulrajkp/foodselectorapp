@@ -12,6 +12,8 @@ import Details from "./Detail";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 import ProfileScreen from "./ProfileScreen";
 import EditProfileScreen from "./EditProfileScreen";
+import { useTheme } from "react-native-paper";
+import { Colors } from "react-native/Libraries/NewAppScreen";
 
 const Tab = createMaterialBottomTabNavigator();
 
@@ -128,53 +130,57 @@ const Detailstackscreen = ({ navigation }) => (
   </Detailstack.Navigator>
 );
 
-const ProfilestackScreen = ({ navigation }) => (
-  <Profilestack.Navigator
-    screenOptions={{
-      headerStyle: {
-        backgroundColor: "#ffff",
-        elevation: 0,
-      },
-      headerTintColor: "#000000",
-    }}
-  >
-    <Profilestack.Screen
-      name="ProfileScreen"
-      options={{
-        title: "",
-        headerLeft: () => (
-          <Icon.Button
-            name="menu"
-            size={20}
-            backgroundColor="#fff"
-            color="#000"
-            onPress={() => {
-              navigation.openDrawer();
-            }}
-          />
-        ),
-        headerRight: () => (
-          <Icon.Button
-            name="account-edit"
-            size={20}
-            backgroundColor="#fff"
-            color="#000"
-            onPress={() => {
-              navigation.navigate("EditProfileScreen");
-            }}
-          />
-        ),
+const ProfilestackScreen = ({ navigation }) => {
+  const { colors } = useTheme();
+  return (
+    <Profilestack.Navigator
+      screenOptions={{
+        headerStyle: {
+          backgroundColor: colors.background,
+          shadowColor: colors.background, //ios
+          elevation: 0, //android
+        },
+        headerTintColor: colors.text,
       }}
-      component={ProfileScreen}
-    />
-    <Profilestack.Screen
-      name="EditProfileScreen"
-      options={{
-        title: "Edit Profile",
-      }}
-      component={EditProfileScreen}
-    />
-  </Profilestack.Navigator>
-);
+    >
+      <Profilestack.Screen
+        name="ProfileScreen"
+        options={{
+          title: "",
+          headerLeft: () => (
+            <Icon.Button
+              name="menu"
+              size={20}
+              backgroundColor={colors.background}
+              color={colors.text}
+              onPress={() => {
+                navigation.openDrawer();
+              }}
+            />
+          ),
+          headerRight: () => (
+            <Icon.Button
+              name="account-edit"
+              size={20}
+              backgroundColor={colors.background}
+              color={colors.text}
+              onPress={() => {
+                navigation.navigate("EditProfileScreen");
+              }}
+            />
+          ),
+        }}
+        component={ProfileScreen}
+      />
+      <Profilestack.Screen
+        name="EditProfileScreen"
+        options={{
+          title: "Edit Profile",
+        }}
+        component={EditProfileScreen}
+      />
+    </Profilestack.Navigator>
+  );
+};
 
 const styles = StyleSheet.create({});
