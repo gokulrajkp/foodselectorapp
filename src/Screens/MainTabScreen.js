@@ -12,8 +12,9 @@ import Notification from "./NotificationScreen";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 import ProfileScreen from "./ProfileScreen";
 import EditProfileScreen from "./EditProfileScreen";
-import { useTheme } from "react-native-paper";
+import { Avatar, useTheme } from "react-native-paper";
 import { Colors } from "react-native/Libraries/NewAppScreen";
+import { TouchableOpacity } from "react-native-gesture-handler";
 
 const Tab = createMaterialBottomTabNavigator();
 
@@ -25,7 +26,7 @@ export default function MainTabScreen() {
         component={Homestackscreen}
         options={{
           tabBarLabel: "Home",
-          tabBarColor: "#27ab6d",
+          tabBarColor: "#ff6347",
           tabBarIcon: ({ color }) => <MaterialCommunityIcons name="home" color={color} size={26} />,
         }}
       />
@@ -33,7 +34,7 @@ export default function MainTabScreen() {
         name="Details"
         component={Detailstackscreen}
         options={{
-          tabBarLabel: "Updates",
+          tabBarLabel: "Notifications",
           tabBarColor: "#1064eb",
           tabBarIcon: ({ color }) => <MaterialCommunityIcons name="bell" color={color} size={26} />,
         }}
@@ -64,71 +65,101 @@ const Homestack = createStackNavigator();
 const Detailstack = createStackNavigator();
 const Profilestack = createStackNavigator();
 
-const Homestackscreen = ({ navigation }) => (
-  <Homestack.Navigator
-    screenOptions={{
-      headerStyle: {
-        backgroundColor: "#27ab6d",
-      },
-
-      headerTintColor: "#ffffff",
-      headerTitleStyle: {
-        fontWeight: "bold",
-      },
-    }}
-  >
-    <Homestack.Screen
-      name="Homes"
-      options={{
-        title: "overview",
-        headerLeft: () => (
-          <Icon.Button
-            name="menu"
-            size={20}
-            backgroundColor="#27ab6d"
-            onPress={() => {
-              navigation.openDrawer();
-            }}
-          />
-        ),
+const Homestackscreen = ({ navigation }) => {
+  const { colors } = useTheme();
+  return (
+    <Homestack.Navigator
+      screenOptions={{
+        headerStyle: {
+          backgroundColor: colors.background,
+          shadowColor: colors.background, //ios
+          elevation: 0, //android
+        },
+        headerTintColor: colors.text,
       }}
-      component={Home}
-    />
-  </Homestack.Navigator>
-);
+    >
+      <Homestack.Screen
+        name="Homes"
+        options={{
+          title: "Food Finder",
+          headerLeft: () => (
+            <View style={{ marginLeft: 10 }}>
+              <Icon.Button
+                name="menu"
+                size={20}
+                color={colors.text}
+                backgroundColor={colors.background}
+                onPress={() => {
+                  navigation.openDrawer();
+                }}
+              />
+            </View>
+          ),
+          headerRight: () => (
+            <View style={{ flexDirection: "row", marginRight: 10 }}>
+              <Icon.Button
+                name="magnify"
+                size={25}
+                color={colors.text}
+                backgroundColor={colors.background}
+                onPress={() => {}}
+              />
+              <TouchableOpacity
+                style={{ paddingHorizontal: 10, marginTop: 5 }}
+                onPress={() => {
+                  navigation.navigate(Profile);
+                }}
+              >
+                <Avatar.Image
+                  source={{
+                    uri: "https://picsum.photos/seed/picsum/200/300",
+                  }}
+                  size={30}
+                />
+              </TouchableOpacity>
+            </View>
+          ),
+        }}
+        component={Home}
+      />
+    </Homestack.Navigator>
+  );
+};
 
-const Detailstackscreen = ({ navigation }) => (
-  <Detailstack.Navigator
-    screenOptions={{
-      headerStyle: {
-        backgroundColor: "#1064eb",
-      },
-
-      headerTintColor: "#ffffff",
-      headerTitleStyle: {
-        fontWeight: "bold",
-      },
-    }}
-  >
-    <Detailstack.Screen
-      name="Detail"
-      options={{
-        title: "Detail",
-        headerLeft: () => (
-          <Icon.Button
-            name="menu"
-            size={20}
-            backgroundColor="#1064eb"
-            onPress={() => {
-              navigation.openDrawer();
-            }}
-          />
-        ),
+const Detailstackscreen = ({ navigation }) => {
+  const { colors } = useTheme();
+  return (
+    <Detailstack.Navigator
+      screenOptions={{
+        headerStyle: {
+          backgroundColor: colors.background,
+          shadowColor: colors.background, //ios
+          elevation: 0, //android
+        },
+        headerTintColor: colors.text,
       }}
-      component={Notification}
-    />
-  </Detailstack.Navigator>
-);
+    >
+      <Detailstack.Screen
+        name="Detail"
+        options={{
+          title: "Notifications",
+          headerLeft: () => (
+            <Icon.Button
+              name="menu"
+              size={20}
+              color={colors.text}
+              backgroundColor={colors.background}
+              onPress={() => {
+                navigation.openDrawer();
+              }}
+            />
+          ),
+        }}
+        component={Notification}
+      />
+    </Detailstack.Navigator>
+  );
+};
 
 const ProfilestackScreen = ({ navigation }) => {
   const { colors } = useTheme();
