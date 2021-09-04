@@ -3,8 +3,24 @@ import { StyleSheet, SafeAreaView, View } from "react-native";
 
 import { Avatar, Title, Caption, Text, TouchableRipple } from "react-native-paper";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
+import Share from "react-native-share";
+import files from "../assets/FileBase64";
 
 export default function ProfileScreen() {
+  const myCustomShare = async () => {
+    const shareOptions = {
+      message: "Order your next meal from foodfinder App",
+      url: files.appLogo,
+      // url: files.samplePdf,
+      // urls: [files.image1, files.image2],
+    };
+    try {
+      const ShareResponse = await Share.open(shareOptions);
+      console.log(JSON.stringify(ShareResponse));
+    } catch (error) {
+      console.log("Error => ", error);
+    }
+  };
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.userInfoSection}>
@@ -53,7 +69,11 @@ export default function ProfileScreen() {
             <Text style={styles.menuItemtext}>Payment</Text>
           </View>
         </TouchableRipple>
-        <TouchableRipple onPress={() => {}}>
+        <TouchableRipple
+          onPress={() => {
+            myCustomShare();
+          }}
+        >
           <View style={styles.menuitem}>
             <Icon name="share-outline" color="#ff6347" size={25} />
             <Text style={styles.menuItemtext}>Tell your friends</Text>

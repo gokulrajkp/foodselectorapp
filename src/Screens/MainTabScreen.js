@@ -8,7 +8,7 @@ import Profile from "./ProfileScreen";
 
 import { createStackNavigator } from "@react-navigation/stack";
 
-import Details from "./Detail";
+import Notification from "./NotificationScreen";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 import ProfileScreen from "./ProfileScreen";
 import EditProfileScreen from "./EditProfileScreen";
@@ -125,7 +125,7 @@ const Detailstackscreen = ({ navigation }) => (
           />
         ),
       }}
-      component={Details}
+      component={Notification}
     />
   </Detailstack.Navigator>
 );

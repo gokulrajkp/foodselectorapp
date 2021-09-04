@@ -5047,6 +5047,16 @@ react-native-screens@~3.4.0:
   dependencies:
     warn-once "^0.1.0"
 
+react-native-share@^7.0.2:
+  version "7.0.2"
+  resolved "https://registry.yarnpkg.com/react-native-share/-/react-native-share-7.0.2.tgz#2d8dd25008a28ed1a74d65b94e86e6ca7ead91dd"
+  integrity sha512-eIcp27XgQq5saO3/LUgFtX5gWWYgYi/xXTZ3pP4boIM+3Rl374LsOn6U2YOzVQDW6m1MsOSI/Bnw7P6aUvZhYA==
+
+react-native-swipe-list-view@^3.2.9:
+  version "3.2.9"
+  resolved "https://registry.yarnpkg.com/react-native-swipe-list-view/-/react-native-swipe-list-view-3.2.9.tgz#d725c7cdf481dd5df12a00dbfe0120013b5f2e59"
+  integrity sha512-SjAEuHc/D6ovp+RjDUhfNmw6NYOntdT7+GFhfMGfP/BSLMuMWynpzJy9GKQeyB8sI78T6Lzip21TVbongOg1Mw==
+
 react-native-unimodules@~0.14.5:
   version "0.14.6"
   resolved "https://registry.yarnpkg.com/react-native-unimodules/-/react-native-unimodules-0.14.6.tgz#5460a34d44e880909cb63d9bb4c4d77ff158bf0a"
