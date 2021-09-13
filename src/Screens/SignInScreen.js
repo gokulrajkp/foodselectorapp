@@ -28,6 +28,8 @@ export default function SignInScreen({ navigation }) {
     isValidPassword: true,
   });
 
+  console.log("/////////");
+  console.log(AuthContext);
   const { colors } = useTheme();
   const { signIn } = useContext(AuthContext);
   const updateSecureTextEntry = () => {
