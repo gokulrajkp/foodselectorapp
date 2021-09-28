@@ -15,6 +15,7 @@ import EditProfileScreen from "./EditProfileScreen";
 import { Avatar, useTheme } from "react-native-paper";
 import { Colors } from "react-native/Libraries/NewAppScreen";
 import { TouchableOpacity } from "react-native-gesture-handler";
+import CardListScreen from "./CardListScreen";
 
 const Tab = createMaterialBottomTabNavigator();
 
@@ -121,6 +122,14 @@ const Homestackscreen = ({ navigation }) => {
           ),
         }}
         component={Home}
+      />
+      <Homestack.Screen
+        name="CardListScreen"
+        component={CardListScreen}
+        options={({ route }) => ({
+          title: route.params.title,
+          headerBackTitleVisible: false,
+        })}
       />
     </Homestack.Navigator>
   );

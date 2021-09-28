@@ -143,7 +143,7 @@ export default function App() {
         console.log(error);
       }
       dispatch({ type: "RETRIVE_TOKEN", token: userToken });
-    }, 100);
+    }, 2000);
   }, []);
   if (loginState.isLoading) {
     return (
@@ -158,7 +158,7 @@ export default function App() {
       <AuthContext.Provider value={authContext}>
         <NavigationContainer theme={theme}>
           {loginState.userToken !== null ? (
-            <Drawer.Navigator drawerContent={(Props) => <DrawerContent {...Props} />}>
+            <Drawer.Navigator drawerContent={() => <DrawerContent />}>
               <Drawer.Screen name="TabScrens" options={{ headerShown: false }} component={MainTabScreen} />
               <Drawer.Screen name="Bookmark" component={Bookmark} />
               <Drawer.Screen name="Setting" component={Settings} />
